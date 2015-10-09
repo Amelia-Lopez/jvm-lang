@@ -1,0 +1,62 @@
+table.comparison {
+	border: 1px solid #888;
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin: 0.5em auto;
+}
+
+table.comparison td{
+	border: 1px solid #888;
+	padding: 0.3em 0.7em;
+}
+
+table.comparison th{
+	border: 0px solid #888;
+	padding: 0.3em 0.7em;
+	background-color: #EEE;
+}
+
+pre {
+	font-family: 'Andale Mono', 'Courier New', Courier, monospace;
+}
+
+/*.code { 
+	border: 1px dashed #888;
+	background-color: #EEE;
+	font-family: 'Andale Mono', 'Courier New', Courier, monospace;
+	padding: 0 1em;
+	margin: 0.4em 0;
+	overflow: auto;
+}
+
+code {
+	font-family: 'Andale Mono', 'Courier New', Courier, monospace;
+}*/
+
+.header-column {
+	font-family: lucida grande, helvetica, arial, san-serif;
+}
+
+tr td {
+	font-family: consolas, inconsolata, andale mono, monospace;
+}
+
+tr.non-code td {
+	font-family: lucida grande, helvetica, arial, san-serif;
+}
+
+.note {
+	color: gray;
+	font-style: italic;
+}
+
+.license-area {
+	padding: 0.5em 0;
+	color: #555;
+	text-align: center;
+}
+
+* {
+	font-family: lucida grande, helvetica, arial, san-serif;
+	font-size: 10pt;
+}
