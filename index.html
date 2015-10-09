@@ -31,6 +31,33 @@
 <td class="note">displayed by REPL on startup</td>
 </tr>
 
+<tr>
+<td class="header-column">repl</td>
+<td class="note">none</td>
+<td>$ groovysh</td>
+<td>$ scala</td>
+<td>$ kotlinc</td>
+<td>$ java -jar /PATH/TO/clojure.jar</td>
+</tr>
+
+<tr>
+<td class="header-column">compile</td>
+<td>$ javac MyClass.java</td>
+<td>$ groovyc MyClass.groovy  <span class="note">(optional)</span></td>
+<td>$ scalac MyClass.scala</td>
+<td>$ kotlinc myclass.kt -include-runtime -d myclass.jar</td>
+<td class="note">not applicable???</td>
+</tr>
+
+<tr>
+<td class="header-column">run</td>
+<td>$ java MyClass</td>
+<td>$ groovy MyClass.groovy<br/><br/><span class="note">(when compiled)</span><br/>$ java -cp /PATH/TO/groovy-all-2.4.5.jar;. MyClass</td>
+<td>$ scala MyClass</td>
+<td>$ java -jar myclass.jar</td>
+<td class="note">???</td>
+</tr>
+
 </table>
 
 <div class="license-area">

@@ -5,14 +5,14 @@ table.comparison {
 	margin: 0.5em auto;
 }
 
-table.comparison td{
+table.comparison td {
 	border: 1px solid #888;
-	padding: 0.3em 0.7em;
+	padding: 0.5em 0.5em;
 }
 
-table.comparison th{
+table.comparison th {
 	border: 0px solid #888;
-	padding: 0.3em 0.7em;
+	padding: 0.5em 0.5em;
 	background-color: #EEE;
 }
 
