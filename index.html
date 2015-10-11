@@ -11,19 +11,18 @@
 
 <body>
 <table class="comparison">
-<tr><th/><th colspan="5" class="main-header">Languages</th></tr>
 
 <tr class="header">
-<th/><th>Java</th><th>Groovy</th><th>Scala</th><th>Kotlin</th><th>Clojure</th>
+<th/><th>java</th><th>groovy</th><th>scala</th><th>kotlin</th><th>clojure</th>
 </tr>
 
 <tr class="non-code">
-<td class="header-column">version used</td>
+<td class="header-column"><a href="#version_used">version used</a></td>
 <td>8</td><td>2.4</td><td>2.11</td><td>0.14</td><td>1.7</td>
 </tr>
 
 <tr>
-<td class="header-column">show version</td>
+<td class="header-column"><a href="#show_version">show version</a></td>
 <td>$ javac -version</td>
 <td>$ groovy -v</td>
 <td>$ scala -version</td>
@@ -31,8 +30,14 @@
 <td class="note">displayed by REPL on startup</td>
 </tr>
 
+<tr><th colspan="6" class="main-header">invocation</th></tr>
+
+<tr class="header">
+<th/><th>java</th><th>groovy</th><th>scala</th><th>kotlin</th><th>clojure</th>
+</tr>
+
 <tr>
-<td class="header-column">repl</td>
+<td class="header-column"><a href="#repl">repl</a></td>
 <td class="note">none</td>
 <td>$ groovysh</td>
 <td>$ scala</td>
@@ -41,24 +46,84 @@
 </tr>
 
 <tr>
-<td class="header-column">compile</td>
-<td>$ javac MyClass.java</td>
-<td>$ groovyc MyClass.groovy  <span class="note">(optional)</span></td>
-<td>$ scalac MyClass.scala</td>
-<td>$ kotlinc myclass.kt -include-runtime -d myclass.jar</td>
-<td class="note">not applicable???</td>
+<td class="header-column"><a href="#compiler">compiler</a></td>
+<td>$ javac MyClass.java<br/>
+$ java MyClass</td>
+<td>$ groovyc MyClass.groovy<br/>
+$ java -cp /PATH/TO/groovy-all-2.4.5.jar;. MyClass</td>
+<td>$ scalac MyClass.scala<br/>
+$ scala MyClass</td>
+<td>$ kotlinc myclass.kt -include-runtime -d myclass.jar<br/>
+$ java -jar myclass.jar</td>
+<td></td>
 </tr>
 
 <tr>
-<td class="header-column">run</td>
-<td>$ java MyClass</td>
-<td>$ groovy MyClass.groovy<br/><br/><span class="note">(when compiled)</span><br/>$ java -cp /PATH/TO/groovy-all-2.4.5.jar;. MyClass</td>
-<td>$ scala MyClass</td>
-<td>$ java -jar myclass.jar</td>
-<td class="note">???</td>
+<td class="header-column"><a href="#interpreter">interpreter</a></td>
+<td class="note">none</td>
+<td>$ groovy hello.groovy</td>
+<td>$ scala hello.scala</td>
+<td>$ kotlinc -script hello.kts</td>
+<td></td>
+</tr>
+
+<tr><th colspan="6" class="main-header">grammar</th></tr>
+
+<tr class="header">
+<th/><th>java</th><th>groovy</th><th>scala</th><th>kotlin</th><th>clojure</th>
+</tr>
+
+<tr>
+<td class="header-column"><a href="#statement_terminator">statement terminator</a></td>
+<td>;</td>
+<td>; <span class="note"> or sometimes newline</span></td>
+<td>; <span class="note"> or sometimes newline</span></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td class="header-column">blank</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 
 </table>
+<br/><br/><br/>
+
+<h1>Notes</h1>
+
+<h2><a name="version_used">version used</a></h2>
+The version used for examples in this sheet.
+
+<h2><a name="show_version">show version</a></h2>
+How to get the installed version.
+
+<h1>invocation</h1>
+
+<h2><a name="repl">repl</a></h2>
+
+<h2><a name="compiler">compiler</a></h2>
+
+<h2><a name="interpreter">interpreter</a></h2>
+
+<h1>grammar</h1>
+
+<h2><a name="statement_terminator">statement terminator</a></h2>
+<h3>groovy:</h3>
+newline is not a separator inside (), [], triple quote literal, or after binary operator or backslash
+
+<h3>scala:</h3>
+newline is not a separator if:
+<ul>
+	<li>the line ends with an infix operator, including a period</li>
+	<li>the following line begins with a word that is not legal at the start of a statement</li>
+	<li>the line ends inside a parens or square brackets, neither of which can contain multiple statements</li>
+</ul>
+
 
 <div class="license-area">
 some content adapted from <a href="https://github.com/clarkgrubb/hyperpolyglot">hyperpolyglot.org</a> (endorsement is not implied) | 
