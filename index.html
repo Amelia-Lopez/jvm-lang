@@ -89,7 +89,7 @@ $ java -jar myclass.jar</td>
 <tr>
 <td class="header-column"><a href="#block_delimiters">block delimiters</a></td>
 <td></td>
-<td></td>
+<td>{ }</td>
 <td>{ }</td>
 <td></td>
 <td></td>
@@ -98,7 +98,7 @@ $ java -jar myclass.jar</td>
 <tr>
 <td class="header-column"><a href="#end-of-line_comment">end-of-line comment</a></td>
 <td></td>
-<td></td>
+<td>// comment</td>
 <td>// comment</td>
 <td></td>
 <td></td>
@@ -107,7 +107,9 @@ $ java -jar myclass.jar</td>
 <tr>
 <td class="header-column"><a href="#multiple_line_comment">multiple line comment</a></td>
 <td></td>
-<td></td>
+<td>/* comment line<br/>
+another comment<br/>
+last comment */</td>
 <td>/* comment line<br/>
 another comment<br/>
 last comment */</td>
@@ -126,7 +128,7 @@ last comment */</td>
 <tr>
 <td class="header-column"><a href="#write-once_variable">once variable</a></td>
 <td></td>
-<td></td>
+<td>final n = 1 + 2</td>
 <td>val n = 1 + 2</td>
 <td></td>
 <td></td>
@@ -135,7 +137,9 @@ last comment */</td>
 <tr>
 <td class="header-column"><a href="#modifiable_variable">modifiable variable</a></td>
 <td></td>
-<td></td>
+<td>x = 1<br/>
+def y = 2<br/>
+Integer z = 3</td>
 <td>var n = 3<br/>
 n = 4</td>
 <td></td>
@@ -145,7 +149,11 @@ n = 4</td>
 <tr>
 <td class="header-column"><a href="#parallel_assignment">parallel assignment</a></td>
 <td></td>
-<td></td>
+<td>(x, y, z) = [1, 2, 3]<br/><br/>
+<span class="note">// 3 is discarded:</span><br/>
+(x, y) = [1, 2, 3]<br/>
+<span class="note">// z is set to null:</span><br/>
+(x, y, z) = [1, 2]</td>
 <td></td>
 <td></td>
 <td></td>
@@ -154,7 +162,7 @@ n = 4</td>
 <tr>
 <td class="header-column"><a href="#swap">swap</a></td>
 <td></td>
-<td></td>
+<td>(x, y) = [y, x]</td>
 <td></td>
 <td></td>
 <td></td>
@@ -177,7 +185,10 @@ none<br/><br/>
 <tr>
 <td class="header-column"><a href="#increment_and_decrement">increment and decrement</a></td>
 <td></td>
-<td></td>
+<td>n++<br/>
+++n<br/>
+n--<br/>
+--n</td>
 <td>n += 1<br/>
 n -= 1</td>
 <td></td>
@@ -197,7 +208,7 @@ n -= 1</td>
 <tr>
 <td class="header-column"><a href="#conditional_expression">conditional expression</a></td>
 <td></td>
-<td></td>
+<td>n &lt; 0 ? -n : n</td>
 <td>if (n &lt; 0) -n else n</td>
 <td></td>
 <td></td>
@@ -206,7 +217,8 @@ n -= 1</td>
 <tr>
 <td class="header-column"><a href="#branch_type_mismatch">branch type mismatch</a></td>
 <td></td>
-<td></td>
+<td><span class="note">// expression type evaluated at runtime:</span><br/>
+n &lt; 0 ? 1 : 'ham'</td>
 <td><span class="note">// expression has type Any:</span><br/>
 if (true) { "hello" } else { 3 }</td>
 <td></td>
@@ -216,7 +228,7 @@ if (true) { "hello" } else { 3 }</td>
 <tr>
 <td class="header-column"><a href="#null">null</a></td>
 <td></td>
-<td></td>
+<td>null</td>
 <td>null</td>
 <td></td>
 <td></td>
@@ -225,11 +237,15 @@ if (true) { "hello" } else { 3 }</td>
 <tr>
 <td class="header-column"><a href="#let_in">let ... in ...</a></td>
 <td></td>
-<td></td>
+<td>def z = {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;x = 3.0<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;y = 2.0<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;x * y<br/>
+}.call()</td>
 <td>val z = {<br/>
 &nbsp;&nbsp;val x = 3.0<br/>
 &nbsp;&nbsp;val y = 2.0 * x<br/>
-&nbsp;&nbsp; x * y<br/>
+&nbsp;&nbsp;x * y<br/>
 }</td>
 <td></td>
 <td></td>
@@ -246,7 +262,7 @@ if (true) { "hello" } else { 3 }</td>
 <tr>
 <td class="header-column"><a href="#boolean_type">boolean type</a></td>
 <td></td>
-<td></td>
+<td>boolean</td>
 <td>Boolean</td>
 <td></td>
 <td></td>
@@ -255,7 +271,7 @@ if (true) { "hello" } else { 3 }</td>
 <tr>
 <td class="header-column"><a href="#true_and_false">true and false</a></td>
 <td></td>
-<td></td>
+<td>true false</td>
 <td>true false</td>
 <td></td>
 <td></td>
@@ -264,7 +280,7 @@ if (true) { "hello" } else { 3 }</td>
 <tr>
 <td class="header-column"><a href="#falsehoods">falsehoods</a></td>
 <td></td>
-<td></td>
+<td>false null 0 0.0 "" [] [:]</td>
 <td></td>
 <td></td>
 <td></td>
@@ -273,7 +289,7 @@ if (true) { "hello" } else { 3 }</td>
 <tr>
 <td class="header-column"><a href="#logical_operators">logical operators</a></td>
 <td></td>
-<td></td>
+<td>&amp;&amp; || !</td>
 <td>&amp;&amp; || !</td>
 <td></td>
 <td></td>
@@ -282,7 +298,7 @@ if (true) { "hello" } else { 3 }</td>
 <tr>
 <td class="header-column"><a href="#relational_operators">relational operators</a></td>
 <td></td>
-<td></td>
+<td>== != &lt; > &lt;= >=</td>
 <td>== != &lt; > &lt;= >=</td>
 <td></td>
 <td></td>
@@ -291,7 +307,11 @@ if (true) { "hello" } else { 3 }</td>
 <tr>
 <td class="header-column"><a href="#integer_types">integer types</a></td>
 <td></td>
-<td></td>
+<td>BigInteger <span class="note">(arbitrary precision)</span><br/>
+long <span class="note">(64-bit signed)</span><br/>
+int <span class="note">(32-bit signed)</span><br/>
+short <span class="note">(16-bit signed)</span><br/>
+byte <span class="note">(8-bit signed)</span></td>
 <td>BigInt <span class="note">(arbitrary precision)</span><br/>
 Long <span class="note">(64-bit signed)</span><br/>
 Int <span class="note">(32-bit signed)</span><br/>
@@ -312,7 +332,7 @@ Byte <span class="note">(8-bit signed)</span></td>
 <tr>
 <td class="header-column"><a href="#string_type">string type</a></td>
 <td></td>
-<td></td>
+<td>String</td>
 <td>String</td>
 <td></td>
 <td></td>
@@ -321,8 +341,12 @@ Byte <span class="note">(8-bit signed)</span></td>
 <tr>
 <td class="header-column"><a href="#string_literal">string literal</a></td>
 <td></td>
-<td></td>
-<td>"Hello, World!"<br/><br/>
+<td>"don't say \"no\""<br/>
+'don\'t say "no"'<br/>
+"""don't say "no\""""<br/>
+'''don't say "no"'''<br/>
+/don't say "no"/</td>
+<td>"Hello, World!"<br/>
 """Hello, World!"""</td>
 <td></td>
 <td></td>
@@ -331,7 +355,8 @@ Byte <span class="note">(8-bit signed)</span></td>
 <tr>
 <td class="header-column"><a href="#variable_interpolation">variable interpolation</a></td>
 <td></td>
-<td></td>
+<td>def x = 10<br/>
+"The value of x is: $x"</td>
 <td>val x = 10<br/>
 s"The value of x is: $x"</td>
 <td></td>
@@ -341,7 +366,9 @@ s"The value of x is: $x"</td>
 <tr>
 <td class="header-column"><a href="#expression_interpolation">expression interpolation</a></td>
 <td></td>
-<td></td>
+<td>def x = 10<br/>
+def y = 20<br/>
+"The value of x + y is: ${x + y}"</td>
 <td>val x = 10<br/>
 val y = 20<br/>
 s"The value of x + y is: ${x + y}"</td>
@@ -352,7 +379,7 @@ s"The value of x + y is: ${x + y}"</td>
 <tr>
 <td class="header-column"><a href="#format_string">format string</a></td>
 <td></td>
-<td></td>
+<td>sprintf("foo %s %d %.2f", "bar", 7, 3.1415)</td>
 <td>"foo %s %d %.2f".format("bar", 7, 3.1415)</td>
 <td></td>
 <td></td>
@@ -361,7 +388,10 @@ s"The value of x + y is: ${x + y}"</td>
 <tr>
 <td class="header-column"><a href="#number_to_string">number to string</a></td>
 <td></td>
-<td></td>
+<td>2.toString()<br/>
+2 as String<br/>
+3.14.toString()<br/>
+3.14 as String</td>
 <td>2.toString<br/>
 3.14.toString</td>
 <td></td>
@@ -371,7 +401,12 @@ s"The value of x + y is: ${x + y}"</td>
 <tr>
 <td class="header-column"><a href="#string_to_number">string to number</a></td>
 <td></td>
-<td></td>
+<td>"12".toInteger()<br/>
+"12" as int<br/>
+"12" as Integer<br/>
+".037".toFloat()<br/>
+".037" as float<br/>
+".037" as Float<br/></td>
 <td>"12".toInt<br/>
 ".037".toFloat</td>
 <td></td>
@@ -381,7 +416,7 @@ s"The value of x + y is: ${x + y}"</td>
 <tr>
 <td class="header-column"><a href="#join">join</a></td>
 <td></td>
-<td></td>
+<td>["do', "re", "mi"].join(" ")</td>
 <td>List("do", "re", "mi").mkString(" ")</td>
 <td></td>
 <td></td>
@@ -390,7 +425,8 @@ s"The value of x + y is: ${x + y}"</td>
 <tr>
 <td class="header-column"><a href="#split">split</a></td>
 <td></td>
-<td></td>
+<td>"do re mi".split()<br/>
+"do re mi".split(" ")</td>
 <td>"do re mi".split(" ")</td>
 <td></td>
 <td></td>
@@ -399,7 +435,7 @@ s"The value of x + y is: ${x + y}"</td>
 <tr>
 <td class="header-column"><a href="#index_of_substring">index of substring</a></td>
 <td></td>
-<td></td>
+<td>"hello".indexOf("he")</td>
 <td>"hello".indexOf("he")</td>
 <td></td>
 <td></td>
@@ -408,7 +444,7 @@ s"The value of x + y is: ${x + y}"</td>
 <tr>
 <td class="header-column"><a href="#extract_substring">extract substring</a></td>
 <td></td>
-<td></td>
+<td>"hello".substring(0, 2)</td>
 <td>"hello".substring(0, 2)</td>
 <td></td>
 <td></td>
@@ -417,7 +453,7 @@ s"The value of x + y is: ${x + y}"</td>
 <tr>
 <td class="header-column"><a href="#extract_character">extract character</a></td>
 <td></td>
-<td></td>
+<td>"hello"[2]</td>
 <td>"hello"(2)</td>
 <td></td>
 <td></td>
@@ -546,7 +582,12 @@ s"The value of x + y is: ${x + y}"</td>
 <tr>
 <td class="header-column"><a href="#define_function">define function</a></td>
 <td></td>
-<td></td>
+<td>def add(x, y) {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;x + y<br/>
+}<br/><br/>
+def addInt(int x, int y) {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;x + y<br/>
+}</td>
 <td><span class="note">// argument types must be declared</span><br/>
 def average(a: Double, b: Double)<br/>
 &nbsp;&nbsp;= (a + b) / 2.0<br/><br/>
@@ -570,7 +611,8 @@ def print_numbers() = {<br/>
 <tr>
 <td class="header-column"><a href="#invoke_function">invoke function</a></td>
 <td></td>
-<td></td>
+<td>add(1, 2)<br/>
+add 1, 2</td>
 <td>average(1, 2)</td>
 <td></td>
 <td></td>
@@ -588,7 +630,14 @@ def print_numbers() = {<br/>
 <tr>
 <td class="header-column"><a href="#named_parameter">named parameter</a></td>
 <td></td>
-<td></td>
+<td><span class="note">// constructor - sets value of each class field</span><br/>
+def him = new Person(name: 'Bob', age: 18)<br/><br/>
+<span class="note">// otherwise - converted to map</span><br/>
+him.move(street: '1 Infinite Loop', city: 'Cupertino')<br/><br/>
+def move(newAddress) {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;this.street = newAddress.street<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;this.city = newAddress.city<br/>
+}</td>
 <td>def substract(m: Int, s: Int) = m - s<br/>
 subtract(s = 3, m = 7)</td>
 <td></td>
@@ -596,15 +645,19 @@ subtract(s = 3, m = 7)</td>
 </tr>
 
 <tr>
-<td class="header-column"><a href="#named_parameter_default_value">named parameter with default value</a></td>
+<td class="header-column"><a href="#default_value">default value</a></td>
 <td></td>
-<td></td>
+<td>def logarithm(x, base = Math.exp(1)) {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;Math.log(x) / Math.log(base)<br/>
+}<br/><br/>
+logarithm(2.718)<br/>
+logarithm(10, 2)</td>
 <td>def logarithm(x: Double,<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 base: Double = math.exp(1) =<br/>
 &nbsp;&nbsp;math.log(x) / math.log(base)<br/><br/>
 logarithm(2.718)<br/>
-logarithm(10, base = 2)</td>
+logarithm(10, 2)</td>
 <td></td>
 <td></td>
 </tr>
@@ -612,12 +665,11 @@ logarithm(10, base = 2)</td>
 <tr>
 <td class="header-column"><a href="#variable_number_of_arguments">variable number of arguments</a></td>
 <td></td>
-<td></td>
-<td>def printStrings(args: String*) = {<br/>
-&nbsp;&nbsp;for (arg &lt;- args) {<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;println(arg)<br/>
-&nbsp;&nbsp;}<br/>
+<td>def printStrings(String... args) {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;args.each {println it}<br/>
 }</td>
+<td>def printStrings(args: String*)<br/>
+&nbsp;&nbsp;= args.foreach { println(_) }</td>
 <td></td>
 <td></td>
 </tr>
@@ -625,7 +677,7 @@ logarithm(10, base = 2)</td>
 <tr>
 <td class="header-column"><a href="#multiple_return_values">multiple return values</a></td>
 <td></td>
-<td></td>
+<td>def origin = [0, 0]</td>
 <td>def origin = (0, 0)</td>
 <td></td>
 <td></td>
@@ -634,7 +686,12 @@ logarithm(10, base = 2)</td>
 <tr>
 <td class="header-column"><a href="#recursive_function">recursive function</a></td>
 <td></td>
-<td></td>
+<td>def range(int a, int b) {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;a > b ? [] : [a] + range(a + 1, b)<br/>
+}<br/><br/>
+def range(int x, int b) {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;a > b ? [] : range(a, b - 1) &lt;&lt; b<br/>
+}</td>
 <td>def range(a: Int, b: Int): List[Int] =<br/>
 &nbsp;&nbsp;if (a > b)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;List()<br/>
@@ -647,8 +704,10 @@ logarithm(10, base = 2)</td>
 <tr>
 <td class="header-column"><a href="#anonymous_function">anonymous function</a></td>
 <td></td>
-<td></td>
-<td>(x: Double, y: Double) => (x + y) / 2.0</td>
+<td>def average = {x, y -> (x + y) / 2.0}<br/>
+def doubleIt = {x -> x * 2}<br/>
+def doubleIt = {it * 2}</td>
+<td>val average = (x: Double, y: Double) => (x + y) / 2.0</td>
 <td></td>
 <td></td>
 </tr>
@@ -656,7 +715,10 @@ logarithm(10, base = 2)</td>
 <tr>
 <td class="header-column"><a href="#currying">currying</a></td>
 <td></td>
-<td></td>
+<td>def plus = {x, y -> x + y}<br/>
+plus(3, 7)<br/>
+def plus2 = plus.curry(2)<br/>
+plus2(7)</td>
 <td>def plus(x: Int)(y: Int) = x + y<br/>
 plus(3)(7)<br/>
 def plus2 = plus(2)<br/>
@@ -797,7 +859,7 @@ newline is not a separator if:
 <h2><a name="#invoke_function">invoke function</a></h2>
 <h2><a name="#nest_function">nest function</a></h2>
 <h2><a name="#named_parameter">named parameter</a></h2>
-<h2><a name="#named_parameter_default_value">named parameter with default value</a></h2>
+<h2><a name="#default_value">default value</a></h2>
 <h2><a name="#variable_number_of_arguments">variable number of arguments</a></h2>
 <h2><a name="#multiple_return_values">multiple return values</a></h2>
 <h2><a name="#recursive_function">recursive function</a></h2>
