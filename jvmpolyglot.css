@@ -1,5 +1,5 @@
 table.comparison {
-	width: 100%;
+	width: 2000px;
 	border: 1px solid #888;
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -55,7 +55,7 @@ tr.non-code td {
 	font-style: italic;
 }
 
-h1 {
+h1, h1 * {
 	font-size: 125%;
 }
 
