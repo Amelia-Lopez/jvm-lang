@@ -130,7 +130,10 @@ last comment */</td>
 <td></td>
 <td>final n = 1 + 2</td>
 <td>val n = 1 + 2</td>
-<td></td>
+<td>val n = 1<br/><br/>
+<span class="note">// type required when no initializer is provided</span><br/>
+val c: Int<br/>
+c = 1</td>
 <td></td>
 </tr>
 
@@ -142,7 +145,8 @@ def y = 2<br/>
 Integer z = 3</td>
 <td>var n = 3<br/>
 n = 4</td>
-<td></td>
+<td>var n = 3<br/>
+n = 4</td>
 <td></td>
 </tr>
 
@@ -151,7 +155,7 @@ n = 4</td>
 <td></td>
 <td>def z = 3</td>
 <td>val z = 3</td>
-<td></td>
+<td>val z = 3</td>
 <td></td>
 </tr>
 
@@ -160,7 +164,7 @@ n = 4</td>
 <td></td>
 <td>int z = 3</td>
 <td>val z: Int = 3</td>
-<td></td>
+<td>val z: Int = 3</td>
 <td></td>
 </tr>
 
@@ -169,7 +173,7 @@ n = 4</td>
 <td></td>
 <td><span class="note">default behavior</span></td>
 <td><span class="note">not possible</span></td>
-<td></td>
+<td><span class="note">not supported when targeting the JVM</span></td>
 <td></td>
 </tr>
 
@@ -178,7 +182,7 @@ n = 4</td>
 <td></td>
 <td><span class="note">annotate class with @CompileStatic</span></td>
 <td><span class="note">default behavior</span></td>
-<td></td>
+<td><span class="note">default behavior</span></td>
 <td></td>
 </tr>
 
@@ -228,7 +232,10 @@ n--<br/>
 --n</td>
 <td>n += 1<br/>
 n -= 1</td>
-<td></td>
+<td>n++<br/>
+++n<br/>
+n--<br/>
+--n</td>
 <td></td>
 </tr>
 
@@ -238,7 +245,7 @@ n -= 1</td>
 <td></td>
 <td>Unit<br/>
 ()</td>
-<td></td>
+<td>Unit</td>
 <td></td>
 </tr>
 
@@ -247,7 +254,7 @@ n -= 1</td>
 <td></td>
 <td>n &lt; 0 ? -n : n</td>
 <td>if (n &lt; 0) -n else n</td>
-<td></td>
+<td>if (n &lt; 0) -n else n</td>
 <td></td>
 </tr>
 
@@ -301,7 +308,7 @@ if (true) { "hello" } else { 3 }</td>
 <td></td>
 <td>boolean</td>
 <td>Boolean</td>
-<td></td>
+<td>Boolean</td>
 <td></td>
 </tr>
 
@@ -310,7 +317,7 @@ if (true) { "hello" } else { 3 }</td>
 <td></td>
 <td>true false</td>
 <td>true false</td>
-<td></td>
+<td>true false</td>
 <td></td>
 </tr>
 
@@ -354,7 +361,11 @@ Long <span class="note">(64-bit signed)</span><br/>
 Int <span class="note">(32-bit signed)</span><br/>
 Short <span class="note">(16-bit signed)</span><br/>
 Byte <span class="note">(8-bit signed)</span></td>
-<td></td>
+<td>BigInteger <span class="note">(arbitrary precision)</span><br/>
+Long <span class="note">(64-bit signed)</span><br/>
+Int <span class="note">(32-bit signed)</span><br/>
+Short <span class="note">(16-bit signed)</span><br/>
+Byte <span class="note">(8-bit signed)</span></td>
 <td></td>
 </tr>
 
@@ -371,7 +382,7 @@ Byte <span class="note">(8-bit signed)</span></td>
 <td></td>
 <td>String</td>
 <td>String</td>
-<td></td>
+<td>String</td>
 <td></td>
 </tr>
 
@@ -385,7 +396,8 @@ Byte <span class="note">(8-bit signed)</span></td>
 /don't say "no"/</td>
 <td>"Hello, World!"<br/>
 """Hello, World!"""</td>
-<td></td>
+<td>"Hello, World!"<br/>
+"""Hello, World!"""</td>
 <td></td>
 </tr>
 
@@ -396,7 +408,8 @@ Byte <span class="note">(8-bit signed)</span></td>
 "The value of x is: $x"</td>
 <td>val x = 10<br/>
 s"The value of x is: $x"</td>
-<td></td>
+<td>val x = 10<br/>
+"The value of x is: $x"</td>
 <td></td>
 </tr>
 
@@ -409,7 +422,9 @@ def y = 20<br/>
 <td>val x = 10<br/>
 val y = 20<br/>
 s"The value of x + y is: ${x + y}"</td>
-<td></td>
+<td>val x = 10<br/>
+val y = 20<br/>
+"The value of x + y is: ${x + y}"</td>
 <td></td>
 </tr>
 
@@ -418,7 +433,7 @@ s"The value of x + y is: ${x + y}"</td>
 <td></td>
 <td>sprintf("foo %s %d %.2f", "bar", 7, 3.1415)</td>
 <td>"foo %s %d %.2f".format("bar", 7, 3.1415)</td>
-<td></td>
+<td>"foo %s %d %.2f".format("bar", 7, 3.1415)</td>
 <td></td>
 </tr>
 
@@ -431,7 +446,8 @@ s"The value of x + y is: ${x + y}"</td>
 3.14 as String</td>
 <td>2.toString<br/>
 3.14.toString</td>
-<td></td>
+<td>2.toString<br/>
+3.14.toString</td>
 <td></td>
 </tr>
 
@@ -446,16 +462,17 @@ s"The value of x + y is: ${x + y}"</td>
 ".037" as Float<br/></td>
 <td>"12".toInt<br/>
 ".037".toFloat</td>
-<td></td>
+<td>"12".toInt<br/>
+".037".toFloat</td>
 <td></td>
 </tr>
 
 <tr>
 <td class="header-column"><a href="#join">join</a></td>
 <td></td>
-<td>["do', "re", "mi"].join(" ")</td>
+<td>["do", "re", "mi"].join(" ")</td>
 <td>List("do", "re", "mi").mkString(" ")</td>
-<td></td>
+<td>listOf("do", "re", "mi").join(" ")</td>
 <td></td>
 </tr>
 
@@ -465,7 +482,7 @@ s"The value of x + y is: ${x + y}"</td>
 <td>"do re mi".split()<br/>
 "do re mi".split(" ")</td>
 <td>"do re mi".split(" ")</td>
-<td></td>
+<td>"do re mi".split(" ")</td>
 <td></td>
 </tr>
 
@@ -474,7 +491,7 @@ s"The value of x + y is: ${x + y}"</td>
 <td></td>
 <td>"hello".indexOf("he")</td>
 <td>"hello".indexOf("he")</td>
-<td></td>
+<td>"hello".indexOf("he")</td>
 <td></td>
 </tr>
 
@@ -483,7 +500,7 @@ s"The value of x + y is: ${x + y}"</td>
 <td></td>
 <td>"hello".substring(0, 2)</td>
 <td>"hello".substring(0, 2)</td>
-<td></td>
+<td>"hello".substring(0, 2)</td>
 <td></td>
 </tr>
 
@@ -492,7 +509,7 @@ s"The value of x + y is: ${x + y}"</td>
 <td></td>
 <td>"hello"[2]</td>
 <td>"hello"(2)</td>
-<td></td>
+<td>"hello"[2]</td>
 <td></td>
 </tr>
 
@@ -641,7 +658,10 @@ def print_numbers() = {<br/>
 &nbsp;&nbsp;println("one")<br/>
 &nbsp;&nbsp;println("two")<br/>
 }</td>
-<td></td>
+<td>fun sum(a: Int, b: Int): Int {<br/>
+&nbsp;&nbsp;return a + b<br/>
+}<br/><br/>
+fun sum(a: Int, b: Int) = a + b</td>
 <td></td>
 </tr>
 
