@@ -147,6 +147,42 @@ n = 4</td>
 </tr>
 
 <tr>
+<td class="header-column"><a href="#variable_unspecified_type">variable with unspecified type</a></td>
+<td></td>
+<td>def z = 3</td>
+<td>val z = 3</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td class="header-column"><a href="#variable_specified_type">variable with specified type</a></td>
+<td></td>
+<td>int z = 3</td>
+<td>val z: Int = 3</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td class="header-column"><a href="#variable_type_runtime">variable type determined at run-time</a></td>
+<td></td>
+<td><span class="note">default behavior</span></td>
+<td><span class="note">not possible</span></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td class="header-column"><a href="#variable_type_compile_time">variable type determined at compile-time</a></td>
+<td></td>
+<td><span class="note">annotate class with @CompileStatic</span></td>
+<td><span class="note">default behavior</span></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
 <td class="header-column"><a href="#parallel_assignment">parallel assignment</a></td>
 <td></td>
 <td>(x, y, z) = [1, 2, 3]<br/><br/>
@@ -171,11 +207,12 @@ n = 4</td>
 <tr>
 <td class="header-column"><a href="#compound_assignment">compound assignment</a></td>
 <td></td>
-<td></td>
+<td><span class="note">arithmetic:</span><br/>
++= -= *= /= %= **=<br/><br/>
+<span class="note">bit:</span><br/>
+&lt;&lt;= >>= &amp;= |= ^=</td>
 <td><span class="note">arithmetic:</span><br/>
 += -= *= /= %=<br/><br/>
-<span class="note">string:</span><br/>
-none<br/><br/>
 <span class="note">bit:</span><br/>
 &lt;&lt;= >>= &amp;= |= ^=</td>
 <td></td>
@@ -736,12 +773,115 @@ plus2(7)</td>
 <td></td>
 </tr>
 
-<!-- ################## ??? ################## -->
+<!-- ################## CLOSURES ################## -->
 
-<tr><th colspan="6" class="main-header"><a href="#???">???</a></th></tr>
+<tr><th colspan="6" class="main-header"><a href="#closures">closures</a></th></tr>
 
 <tr class="header">
 <th/><th>java</th><th>groovy</th><th>scala</th><th>kotlin</th><th>clojure</th>
+</tr>
+
+<tr>
+<td class="header-column"><a href="#closure_assignment">assignment</a></td>
+<td></td>
+<td>def add = { a, b -> a + b }</td>
+<td>val add = (a: Int, b: Int) => a + b</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td class="header-column"><a href="#closure_no_parameters">closure without parameters</a></td>
+<td></td>
+<td>{ item++ }<br/>
+{ -> item++ }</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td class="header-column"><a href="#closure_implicit_parameters">closure with implicit parameters</a></td>
+<td></td>
+<td>{ println it }<br/>
+{ it * 2 }</td>
+<td>{ println(_) }</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td class="header-column"><a href="#closure_explicit_parameters">closure with explicit parameters</a></td>
+<td></td>
+<td>{ it -> println it }<br/>
+{ name -> println name }<br/>
+{ String x, int y -> println "hey $x the value is $y" }</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td class="header-column"><a href="#calling_closure">calling a closure</a></td>
+<td></td>
+<td>def add2 = { it + 2 }<br/>
+add2(4)<br/>
+add2.call(4)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td class="header-column"><a href="#memoization">memoization</a></td>
+<td></td>
+<td>def fib = { long n -><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;n &lt; 2 ? n : fib(n - 1) + fib(n - 2)<br/>
+}.memoize()</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td class="header-column"><a href="#tail_call_optimiziation">tail-call optimiziation</a></td>
+<td></td>
+<td>def fib = { n, a = 0, b = 1 -><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;n == 0 ? a : fib.trampoline(n – 1, b, a + b)<br/>
+}.trampoline()</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td class="header-column"><a href="#composition">composition</a></td>
+<td></td>
+<td>def plus2 = { it + 2 }<br/>
+def times3 = { it * 3 }<br/>
+def times3plus2 = plus2 &lt;&lt; times 3<br/>
+assert times3plus2(4) == plus2(times3(4))</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td class="header-column"><a href="#blank">blank</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td class="header-column"><a href="#blank">blank</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 
 <tr>
@@ -808,6 +948,10 @@ newline is not a separator if:
 <h1><a name="variables_and_expressions">variables and expressions</a></h1>
 <h2><a name="write-once_variable">once variable</a></h2>
 <h2><a name="modifiable_variable">modifiable variable</a></h2>
+<h2><a name="variable_unspecified_type">variable with unspecified type</a></h2>
+<h2><a name="variable_specified_type">variable with specified type</a></h2>
+<h2><a name="variable_type_runtime">variable type determined at run-time</a></h2>
+<h2><a name="variable_type_compile_time">variable type determined at compile-time</a></h2>
 <h2><a name="parallel_assignment">parallel assignment</a></h2>
 <h2><a name="swap">swap</a></h2>
 <h2><a name="compound_assignment">compound assignment</a></h2>
